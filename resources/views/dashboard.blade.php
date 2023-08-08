@@ -26,9 +26,23 @@
                         <a class="nav-link" href="{{ route('register-user') }}">Register</a>
                     </li>
                     @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('signout') }}">Logout</a>
-                    </li>
+
+                    @can('super-admin')
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('index-category') }}">All Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('createCategory') }}">Create Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users') }}">Users</a>
+                        </li>
+                        @endcan
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('signout') }}">Logout</a>
+                        </li>
+                    
                     @endguest
                 </ul>
             </div>

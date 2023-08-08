@@ -12,6 +12,7 @@ class CategoryController extends Controller
     public function editCategory($id)
     {
         $this->authorize('super-admin');
+
         $category = Category::with('subcategories')->findOrFail($id);
        
         $categories = Category::where('parent_id', null)->where('id', '!=', $category->id)->get();
@@ -127,14 +128,8 @@ class CategoryController extends Controller
     {
         
         $category = Category::findOrFail($id);
- 
-       if($category->subcategories->toArray() !== '[]'){
-       
-            $category->with('subcategories')->delete();
-       }else{
-
-            $category->delete();
-       }
+          
+        $category->delete();
 
         return redirect()->back()->with('delete', 'Category has been deleted successfully.');
     

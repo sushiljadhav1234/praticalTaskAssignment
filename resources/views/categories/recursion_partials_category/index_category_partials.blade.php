@@ -22,7 +22,7 @@
         <td class="py-4 px-3 ">
         
             
-            <form action="{{route('delete-category',  $category->id)}}" method="POST">
+            <form action="{{route('delete-category',  $subcategory->id)}}" method="POST">
                 @csrf
                 @method('DELETE')
             
