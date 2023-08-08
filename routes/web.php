@@ -33,6 +33,7 @@ Route::DELETE('/admin/category/delete/{id}', [CategoryController::class, 'delete
 
 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
 Route::get('register', [AuthController::class, 'registration'])->name('register-user');

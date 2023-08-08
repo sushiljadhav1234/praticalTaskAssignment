@@ -16,7 +16,10 @@ class AuthController extends Controller
     public function userAll() 
     {   
         $this->authorize('super-admin');
-        
+
+        $users = User::all();
+
+        return view('auth.users')->with('users',$users);
     }
 
     public function customLogin(Request $request)

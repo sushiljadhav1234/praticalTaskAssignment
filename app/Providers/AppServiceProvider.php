@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 
+use App\Models\User;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Gate::define('super-admin', function (Request $request) {
-            return $user->id === 1;
+        \Gate::define('super-admin', function (User $user) {
+            return $user->role_id === 1;
         });
     }
 }

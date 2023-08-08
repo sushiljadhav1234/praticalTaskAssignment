@@ -11,7 +11,7 @@ class CategoryController extends Controller
 
     public function editCategory($id)
     {
-
+        $this->authorize('super-admin');
         $category = Category::with('subcategories')->findOrFail($id);
        
         $categories = Category::where('parent_id', null)->where('id', '!=', $category->id)->get();
@@ -94,7 +94,7 @@ class CategoryController extends Controller
 
     public function indexCategory()
     {
-
+        $this->authorize('super-admin');
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
 
         return view('categories.index')->with('categories',$categories);
@@ -102,7 +102,7 @@ class CategoryController extends Controller
     
     public function createCategory()
     {
-    
+        $this->authorize('super-admin');
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
 
         return view('categories.create')->with('categories',$categories);        
